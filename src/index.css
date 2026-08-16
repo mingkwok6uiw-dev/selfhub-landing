@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+
+  .font-serif-tc {
+    font-family: 'Noto Serif TC', 'Songti TC', 'STSong', Georgia, serif;
+  }
+}

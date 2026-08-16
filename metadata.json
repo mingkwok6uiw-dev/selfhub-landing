@@ -1,0 +1,6 @@
+{
+  "name": "自Hub - 每日花時自我關懷工具卡",
+  "description": "一套關於自我照顧 × 自我關懷的工具卡《每日花時》，由自Hub社工團隊精心設計。",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
