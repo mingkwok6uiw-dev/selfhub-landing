@@ -9,4 +9,39 @@
   .font-serif-tc {
     font-family: 'Noto Serif TC', 'Songti TC', 'STSong', Georgia, serif;
   }
+
+  /* Global Warming Animation (CodePen mikeK) */
+  #hero-section0 {
+    height: 450px;
+    width: 100%;
+    background-color: #5166ba;
+    overflow: hidden;
+  }
+  .wave {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+  }
+
+  .wave + .wave {
+    z-index: 2;
+  }
+
+  #ertrinken {
+    position: absolute;
+    top: 15px;
+    z-index: 1;
+  }
+  #mundzu {
+    visibility: hidden;
+  }
+  #text {
+    position: absolute;
+    bottom: 20px;
+    right: 40px;
+    z-index: 10;
+  }
 }

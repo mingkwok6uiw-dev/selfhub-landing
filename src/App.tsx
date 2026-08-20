@@ -5,6 +5,11 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
+import heroFlowerCardImg from './assets/images/hero_flower_card.jpeg';
+import heroBgImg from './assets/images/img_4512.png';
+import { TimelineShowcase } from './components/TimelineShowcase';
+import { GlobalWarmingMikeK } from './components/GlobalWarmingMikeK';
+import { BloomingBranchesBackground } from './components/BloomingBranchesBackground';
 import {
   Sparkles,
   Heart,
@@ -22,7 +27,11 @@ import {
   Gift,
   HelpCircle,
   Layers,
-  ArrowDown
+  ArrowDown,
+  Quote,
+  Award,
+  GraduationCap,
+  Sparkle
 } from 'lucide-react';
 
 const PREORDER_URL = "https://forms.gle/rQi939f5KzBqG7uT6";
@@ -99,124 +108,22 @@ export default function App() {
       </header>
 
       <main className="flex-1">
-        {/* 2. 首屏視覺區 (Hero Section) */}
-        <section
-          id="hero-section"
-          className="relative pt-8 pb-16 md:pt-16 md:pb-24 lg:pt-20 lg:pb-28 overflow-hidden"
-        >
-          {/* Subtle decorative background glow */}
-          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-tr from-sky-100/50 via-indigo-50/30 to-amber-50/40 rounded-full blur-3xl -z-10 pointer-events-none" />
+        {/* Global Warming Animation (CodePen mikeK) */}
+        <GlobalWarmingMikeK />
 
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-              
-              {/* Left Column: Copywriting */}
-              <motion.div
-                initial={{ opacity: 0, y: 24 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                className="lg:col-span-7 flex flex-col items-start text-left space-y-6"
-              >
-                {/* Tag pill */}
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100/80 border border-slate-200/70 text-[#1A365D] text-xs sm:text-sm font-medium tracking-wide">
-                  <Sparkles className="w-3.5 h-3.5 text-amber-500 fill-amber-500/20" />
-                  <span>2026自我關懷必備好物！送禮．自用．帶組必備</span>
-                </div>
-
-                {/* Main Heading */}
-                <h1 className="font-serif-tc text-3xl sm:text-4xl md:text-5xl lg:text-[2.85rem] font-bold text-[#1A365D] leading-[1.3] tracking-tight">
-                  每日五分鐘，<br className="hidden sm:inline" />
-                  學習溫柔對待自己
-                </h1>
-
-                {/* Description paragraph */}
-                <div className="relative pl-4 border-l-2 border-[#1A365D]/30 py-1">
-                  <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-xl font-normal">
-                    最近，我們一班社工朋友設計了一套關於「自我照顧 × 自我關懷」的工具卡《每日花時》。我們留意到這世代的大家，習慣了對人溫柔，卻很少對自己溫柔。希望能藉著這副卡，喚起大家對 self-care 的 awareness，重新學習對自己好一點🤍
-                  </p>
-                </div>
-
-                {/* CTA Button & Trust signals */}
-                <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto">
-                  <a
-                    id="hero-cta-btn"
-                    href={PREORDER_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-[#1A365D] hover:bg-[#14284B] text-white text-base font-semibold transition-all duration-300 shadow-[0_10px_25px_-5px_rgba(26,54,93,0.35)] hover:shadow-[0_15px_30px_-5px_rgba(26,54,93,0.45)] hover:-translate-y-0.5 active:translate-y-0 group cursor-pointer"
-                  >
-                    <span>立即享有早鳥優惠</span>
-                    <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  </a>
-
-                  <button
-                    onClick={() => scrollToSection('empathy-section')}
-                    className="inline-flex items-center justify-center gap-1.5 px-6 py-4 rounded-full bg-white hover:bg-slate-50 text-slate-700 border border-slate-200/80 text-sm font-medium transition-colors cursor-pointer"
-                  >
-                    <span>了解背後故事</span>
-                    <ArrowDown className="w-4 h-4 text-slate-400" />
-                  </button>
-                </div>
-
-                <div className="flex items-center gap-4 text-xs text-slate-500 pt-1">
-                  <span className="flex items-center gap-1">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                    早鳥優惠進行中
-                  </span>
-                  <span>•</span>
-                  <span>專業社工團隊研發</span>
-                  <span>•</span>
-                  <span>限量現貨預約</span>
-                </div>
-              </motion.div>
-
-              {/* Right Column: Hero Image */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.96 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-                style={{ y: heroImageY }}
-                className="lg:col-span-5 relative"
-              >
-                <div className="relative mx-auto max-w-md lg:max-w-none">
-                  {/* Subtle soft backdrop accent */}
-                  <div className="absolute -inset-2 rounded-3xl bg-gradient-to-tr from-[#1A365D]/10 to-amber-100/30 blur-lg transform -rotate-1 -z-10" />
-                  
-                  {/* Main Product Card Visual */}
-                  <div className="relative rounded-2xl md:rounded-3xl overflow-hidden bg-white shadow-[0_20px_40px_-15px_rgba(0,0,0,0.08)] border border-slate-100 group p-1 sm:p-2">
-                    <img
-                      src="https://www.image2url.com/r2/default/images/1786728741245-7d3c82b3-5c0a-40c5-920a-e77d8a29bfd8.jpeg"
-                      alt="《每日花時》自我關懷工具卡產品照"
-                      referrerPolicy="no-referrer"
-                      className="w-full h-auto object-contain block rounded-xl md:rounded-2xl transform transition-transform duration-700 group-hover:scale-[1.02]"
-                    />
-                    
-                    {/* Floating badge over image */}
-                    <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md px-4 py-3 rounded-xl border border-white/60 shadow-lg flex items-center justify-between text-xs sm:text-sm text-slate-800">
-                      <div className="flex items-center gap-2">
-                        <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                        <span className="font-serif-tc font-semibold text-[#1A365D]">《每日花時》全套工具卡</span>
-                      </div>
-                      <span className="text-slate-500 text-xs">50張精選卡牌</span>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-
-            </div>
-          </div>
-        </section>
-
-        {/* 3. 痛點與共鳴區 (Empathy Section) */}
+        {/* 1. 痛點與共鳴區 (Empathy Section) */}
         <section
           id="empathy-section"
           className="relative bg-[#1A365D] text-white py-20 md:py-28 overflow-hidden"
         >
+          {/* Animated Blooming Branches Background */}
+          <BloomingBranchesBackground />
+
           {/* Subtle background star/light elements */}
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-900/60 via-[#1A365D] to-[#0E2038] -z-10" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-900/40 via-[#1A365D]/80 to-[#0E2038]/90 -z-10" />
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
           
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -224,10 +131,6 @@ export default function App() {
               transition={{ duration: 0.7 }}
               className="text-center max-w-3xl mx-auto mb-12 md:mb-16"
             >
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 text-sky-200 text-xs font-medium tracking-wider mb-4 border border-white/10">
-                <Heart className="w-3 h-3 fill-rose-300 text-rose-300" />
-                <span>自我關懷</span>
-              </div>
               <h2 className="font-serif-tc text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight leading-snug text-white mb-6">
                 你有多久，沒有好好照顧自己了？
               </h2>
@@ -270,6 +173,146 @@ export default function App() {
           </div>
         </section>
 
+        {/* 2. 首屏視覺區 (Hero Section) */}
+        <section
+          id="hero-section"
+          className="relative pt-8 pb-16 md:pt-16 md:pb-24 lg:pt-20 lg:pb-28 overflow-hidden"
+        >
+          {/* IMG_4512 Background Image Layer */}
+          <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+            <img
+              src={heroBgImg}
+              alt="《每日花時》實物背景"
+              referrerPolicy="no-referrer"
+              className="w-full h-full object-cover object-center scale-100"
+            />
+            {/* Subtle soft white/cream luminous overlay to ensure text legibility while keeping photo details rich */}
+            <div className="absolute inset-0 bg-[#FBF9F5]/65 sm:bg-[#FBF9F5]/60 backdrop-blur-[1.5px]" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#FBF9F5]/85 via-[#FBF9F5]/60 to-transparent" />
+          </div>
+
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+              
+              {/* Left Column: Copywriting */}
+              <motion.div
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                className="lg:col-span-7 flex flex-col items-start text-left space-y-6"
+              >
+                {/* Hero Title & Subtitle without pill container */}
+                <div className="space-y-3.5 w-full text-center">
+                  {/* H1: Main Product Title - enlarged & centered */}
+                  <h1 className="font-serif-tc text-4xl sm:text-5xl md:text-6xl lg:text-[3.25rem] xl:text-[3.5rem] font-bold text-[#1A365D] leading-[1.2] tracking-tight text-center w-full">
+                    <span>《每日花時》</span>
+                    <span className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.2rem] font-sans tracking-wide text-[#1A365D]/85 font-semibold ml-2 sm:ml-3 inline-block">
+                      FLOWER SELF-CARE CARDS
+                    </span>
+                  </h1>
+
+                  {/* H3: Tagline - centered, without svg icon */}
+                  <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl font-medium text-slate-700 font-serif-tc text-center w-full leading-relaxed">
+                    一物多用自我關懷工具卡 • 與內在重新連結
+                  </h3>
+                </div>
+
+                {/* Main Quote & Description */}
+                <div className="relative pl-4 border-l-2 border-[#1A365D]/30 py-1 space-y-2">
+                  <p className="font-serif-tc text-xl sm:text-2xl font-semibold text-[#1A365D]">
+                    「心靈如花，溫柔有時。」
+                  </p>
+                  <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-xl font-normal">
+                    這不只是一套卡片，更是一個為你敞開的溫柔空間。願你在翻開卡片的那一刻，與自己重新相遇。
+                  </p>
+                </div>
+
+                {/* CTA Button & Trust signals */}
+                <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto">
+                  <a
+                    id="hero-cta-btn"
+                    href={PREORDER_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-[#1A365D] hover:bg-[#14284B] text-white text-base font-semibold transition-all duration-300 shadow-[0_10px_25px_-5px_rgba(26,54,93,0.35)] hover:shadow-[0_15px_30px_-5px_rgba(26,54,93,0.45)] hover:-translate-y-0.5 active:translate-y-0 group cursor-pointer"
+                  >
+                    <span>帶走一份四季的陪伴 →</span>
+                  </a>
+
+                  <button
+                    onClick={() => scrollToSection('card-function-section')}
+                    className="inline-flex items-center justify-center gap-1.5 px-6 py-4 rounded-full bg-white hover:bg-slate-50 text-slate-700 border border-slate-200/80 text-sm font-medium transition-colors cursor-pointer"
+                  >
+                    <span>探索卡片功能</span>
+                    <ArrowDown className="w-4 h-4 text-slate-400" />
+                  </button>
+                </div>
+
+                <div className="flex items-center gap-4 text-xs text-slate-500 pt-1">
+                  <span className="flex items-center gap-1">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                    早鳥優惠進行中
+                  </span>
+                  <span>•</span>
+                  <span>專業社工團隊研發</span>
+                  <span>•</span>
+                  <span>限量現貨預約</span>
+                </div>
+              </motion.div>
+
+              {/* Right Column: Hero Image */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.96 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+                style={{ y: heroImageY }}
+                className="lg:col-span-5 relative"
+              >
+                <div className="relative mx-auto max-w-md lg:max-w-none">
+                  {/* Subtle soft backdrop accent */}
+                  <div className="absolute -inset-2 rounded-3xl bg-gradient-to-tr from-[#1A365D]/10 to-amber-100/30 blur-lg transform -rotate-1 -z-10" />
+                  
+                  {/* Main Product Card Visual */}
+                  <div className="relative max-w-[80%] mx-auto rounded-2xl md:rounded-3xl overflow-hidden bg-white shadow-[0_20px_40px_-15px_rgba(0,0,0,0.08)] border border-slate-100 group p-1 sm:p-2">
+                    <img
+                      src={heroFlowerCardImg}
+                      alt="《每日花時》自我關懷工具卡 - 2026自我照顧必備好物 療癒自己 每日一抽"
+                      referrerPolicy="no-referrer"
+                      className="w-full h-auto object-contain block rounded-xl md:rounded-2xl transform transition-transform duration-700 group-hover:scale-[1.02]"
+                    />
+                    
+                    {/* Floating badge over image */}
+                    <div className="absolute bottom-3 left-3 right-3 bg-white/95 backdrop-blur-md px-3 py-2 sm:py-2.5 rounded-xl border border-white/60 shadow-lg flex items-center justify-between text-[11px] sm:text-xs text-slate-800">
+                      <div className="flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                        <span className="font-serif-tc font-semibold text-[#1A365D]">《每日花時》全套工具卡</span>
+                      </div>
+                      <span className="text-slate-500 text-[10px] sm:text-xs">50張精選卡牌</span>
+                    </div>
+                  </div>
+
+                  {/* Specifications added below the image */}
+                  <div className="mt-4 max-w-[80%] mx-auto p-4 rounded-2xl bg-white/85 backdrop-blur-sm border border-stone-200/80 shadow-xs space-y-2 text-xs sm:text-sm text-slate-700 font-serif-tc">
+                    <div className="flex items-start gap-2">
+                      <span className="text-[#1A365D] font-bold">▪︎</span>
+                      <span><strong>內容物：</strong>30 張【花語卡】 + 20 張【提問卡】</span>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <span className="text-[#1A365D] font-bold">▪︎</span>
+                      <span><strong>卡片尺寸：</strong>8 x 11.2 厘米</span>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <span className="text-[#1A365D] font-bold">▪︎</span>
+                      <span><strong>外盒尺寸：</strong>3.2 厘米 x 8.2 厘米 x 11.4 厘米（上下蓋盒）</span>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+
+            </div>
+          </div>
+        </section>
+
         {/* 🌟 新增：Card Function Section (自我關懷工具卡功能與全覽區 - 參照 image.png 與 image1.png 設計) */}
         <section
           id="card-function-section"
@@ -289,7 +332,7 @@ export default function App() {
               transition={{ duration: 0.7 }}
               className="text-center max-w-3xl mx-auto mb-14 md:mb-16"
             >
-              <div className="inline-flex items-center gap-2 mb-3">
+              <div className="inline-flex items-center gap-2 mb-6">
                 <img
                   src="/image.png"
                   alt="自Hub Logo"
@@ -300,13 +343,50 @@ export default function App() {
                 </span>
               </div>
 
-              <h2 className="font-serif-tc text-3xl sm:text-4xl md:text-5xl font-bold text-[#1A365D] leading-tight tracking-tight mb-4">
-                一物多用的<br className="sm:hidden" />自我關懷工具卡
-              </h2>
-
-              <p className="font-serif-tc text-lg sm:text-xl md:text-2xl text-stone-600 font-medium tracking-wide">
-                你，距離好好愛自己，只差一套卡片。
-              </p>
+              {/* p as the main section header: enlarged font, 3 lines, with fade in animation */}
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-60px" }}
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: {
+                    opacity: 1,
+                    transition: {
+                      staggerChildren: 0.18,
+                    },
+                  },
+                }}
+                className="space-y-2 sm:space-y-3"
+              >
+                <motion.p
+                  variants={{
+                    hidden: { opacity: 0, y: 18 },
+                    visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
+                  }}
+                  className="font-serif-tc text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-bold text-[#6E3B2B] tracking-tight leading-tight"
+                >
+                  或者你
+                </motion.p>
+                <motion.p
+                  variants={{
+                    hidden: { opacity: 0, y: 18 },
+                    visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
+                  }}
+                  className="font-serif-tc text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-bold text-[#6E3B2B] tracking-tight leading-tight"
+                >
+                  距離好好愛自己
+                </motion.p>
+                <motion.p
+                  variants={{
+                    hidden: { opacity: 0, y: 18 },
+                    visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
+                  }}
+                  className="font-serif-tc text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-bold text-[#7C3E2B] tracking-tight leading-tight"
+                >
+                  只差一套卡片
+                </motion.p>
+              </motion.div>
             </motion.div>
 
             {/* 4 Cards Grid - 參照 image.png 的 4 大功能模組 */}
@@ -327,7 +407,7 @@ export default function App() {
                       🔮
                     </span>
                     <h3 className="font-serif-tc text-lg font-bold text-[#5B21B6] tracking-wide">
-                      想療癒：
+                      想療癒
                     </h3>
                   </div>
                   <p className="font-serif-tc text-sm sm:text-base text-stone-600 leading-relaxed">
@@ -355,7 +435,7 @@ export default function App() {
                       🔍
                     </span>
                     <h3 className="font-serif-tc text-lg font-bold text-[#065F46] tracking-wide">
-                      想探索：
+                      想探索
                     </h3>
                   </div>
                   <p className="font-serif-tc text-sm sm:text-base text-stone-600 leading-relaxed">
@@ -383,7 +463,7 @@ export default function App() {
                       👥
                     </span>
                     <h3 className="font-serif-tc text-lg font-bold text-[#1E40AF] tracking-wide">
-                      想連結：
+                      想連結
                     </h3>
                   </div>
                   <p className="font-serif-tc text-sm sm:text-base text-stone-600 leading-relaxed">
@@ -411,7 +491,7 @@ export default function App() {
                       🎁
                     </span>
                     <h3 className="font-serif-tc text-lg font-bold text-[#9F1239] tracking-wide">
-                      想送禮：
+                      想送禮
                     </h3>
                   </div>
                   <p className="font-serif-tc text-sm sm:text-base text-stone-600 leading-relaxed">
@@ -503,6 +583,9 @@ export default function App() {
 
           </div>
         </section>
+
+        {/* 🌟 參照 CodePen 互動式時光軸卡牌輪播設計 (Interactive Card Timeline Showcase) */}
+        <TimelineShowcase />
 
         {/* 4. 產品內容區 (What's Inside) */}
         <section
@@ -805,7 +888,223 @@ export default function App() {
           </div>
         </section>
 
-        {/* 6. 價格與預購區 (Pricing & Final CTA) */}
+        {/* 6. 好評與專業推薦 (Social Proof & Testimonials) */}
+        <section
+          id="social-proof-section"
+          className="py-20 md:py-28 bg-[#FAF9F8] relative border-t border-stone-200/60"
+        >
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            {/* Header */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.6 }}
+              className="text-center max-w-3xl mx-auto mb-14 md:mb-18"
+            >
+              <div className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-rose-50 border border-rose-200/70 text-rose-700 text-xs sm:text-sm font-semibold tracking-wide mb-4 shadow-xs">
+                <Heart className="w-3.5 h-3.5 fill-rose-500 text-rose-500" />
+                <span>真實回響 • 專業推薦</span>
+              </div>
+              <h2 className="font-serif-tc text-2xl sm:text-3xl md:text-4xl font-bold text-[#1A365D] tracking-tight leading-snug">
+                🌸 誠意推介：充滿溫柔力量嘅《每日花時》花語卡 🌸
+              </h2>
+              <div className="w-16 h-0.5 bg-[#1A365D]/30 mx-auto mt-4 rounded-full" />
+            </motion.div>
+
+            {/* 5 User / Peer Testimonial Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+              
+              {/* Card 1 */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="p-6 sm:p-7 rounded-2xl bg-white border border-stone-200/80 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.04)] hover:shadow-md hover:border-slate-300 transition-all flex flex-col justify-between group"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="w-8 h-8 rounded-full bg-rose-50 flex items-center justify-center text-rose-600">
+                      <Quote className="w-4 h-4" />
+                    </div>
+                    <span className="text-[11px] font-medium text-slate-400 font-serif-tc">溫柔心聲 #01</span>
+                  </div>
+                  <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-serif-tc">
+                    「識得 Kensy 嘅人都知，佢係一個好柔軟、細膩同善良嘅女仔。最近佢出咗親自設計嘅《每日花時》花語卡，主打一套卡，多個願望。希望帶大家經歷一個『學識愛自己的開始』。我自己試玩完之後，真心覺得成副卡就好似佢本人一樣，好溫柔、好善良、好 Kensy！」
+                  </p>
+                </div>
+                <div className="mt-5 pt-4 border-t border-slate-100 flex items-center gap-2 text-xs text-[#1A365D] font-medium">
+                  <Sparkle className="w-3.5 h-3.5 text-amber-500 fill-amber-400" />
+                  <span>學識愛自己的開始</span>
+                </div>
+              </motion.div>
+
+              {/* Card 2 */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="p-6 sm:p-7 rounded-2xl bg-white border border-stone-200/80 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.04)] hover:shadow-md hover:border-slate-300 transition-all flex flex-col justify-between group"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="w-8 h-8 rounded-full bg-sky-50 flex items-center justify-center text-sky-600">
+                      <Quote className="w-4 h-4" />
+                    </div>
+                    <span className="text-[11px] font-medium text-slate-400 font-serif-tc">專業深度 #02</span>
+                  </div>
+                  <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-serif-tc">
+                    「市面上有好多唔同嘅心理圖卡，但《每日花時》真係好特別。佢唔係坊間常見嗰啲 OH 卡 或者紅花卡嗰類完全 open-end 嘅類型。佢係有方向同目標嘅，例如會引導你去探索性格特質，但個過程又好 open。卡牌上面用咗好多平時少見嘅形容詞，同一般嘅情緒卡或者 positive characters 卡好唔同，感覺更加有深度。」
+                  </p>
+                </div>
+                <div className="mt-5 pt-4 border-t border-slate-100 flex items-center gap-2 text-xs text-[#1A365D] font-medium">
+                  <Sparkle className="w-3.5 h-3.5 text-sky-500 fill-sky-400" />
+                  <span>有方向且具深度的特質探索</span>
+                </div>
+              </motion.div>
+
+              {/* Card 3 */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.15 }}
+                className="p-6 sm:p-7 rounded-2xl bg-white border border-stone-200/80 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.04)] hover:shadow-md hover:border-slate-300 transition-all flex flex-col justify-between group"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="w-8 h-8 rounded-full bg-indigo-50 flex items-center justify-center text-indigo-600">
+                      <Quote className="w-4 h-4" />
+                    </div>
+                    <span className="text-[11px] font-medium text-slate-400 font-serif-tc">三大主題與行動 #03</span>
+                  </div>
+                  <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-serif-tc">
+                    「佢分咗做三個處理唔同關係嘅主題：處理內在轉化嘅『接納』、處理外在防護嘅『界線』、同埋處理能量補給嘅『關懷/滋養』。最貼心嘅位係，卡片背面除咗有書寫引導，仲會有一個『心行動』。即使係一個深呼吸，都可以陪你將感受轉化為日常嘅微小自我照顧行動。」
+                  </p>
+                </div>
+                <div className="mt-5 pt-4 border-t border-slate-100 flex items-center gap-2 text-xs text-[#1A365D] font-medium">
+                  <Sparkle className="w-3.5 h-3.5 text-indigo-500 fill-indigo-400" />
+                  <span>接納 • 界線 • 滋養</span>
+                </div>
+              </motion.div>
+
+              {/* Card 4 */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="p-6 sm:p-7 rounded-2xl bg-white border border-stone-200/80 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.04)] hover:shadow-md hover:border-slate-300 transition-all flex flex-col justify-between group"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="w-8 h-8 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-600">
+                      <Quote className="w-4 h-4" />
+                    </div>
+                    <span className="text-[11px] font-medium text-slate-400 font-serif-tc">多元應用情境 #04</span>
+                  </div>
+                  <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-serif-tc">
+                    「成副卡嘅設計唔使太多 instructions，已經好容易上手。平時自己喺屋企抽一張用，幫自己叉吓電又得；又或者喺 group 喺 workshop 度用，配合埋香味嚟做 mindful 練習，又得，後續嘅可能性更加係多不勝數。我已經想社工同事同埋中大啲 master 同學試，試完放喺度比同事用。」
+                  </p>
+                </div>
+                <div className="mt-5 pt-4 border-t border-slate-100 flex items-center gap-2 text-xs text-[#1A365D] font-medium">
+                  <Sparkle className="w-3.5 h-3.5 text-emerald-500 fill-emerald-400" />
+                  <span>個人充電 • 團體工作坊多元適配</span>
+                </div>
+              </motion.div>
+
+              {/* Card 5 */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.25 }}
+                className="p-6 sm:p-7 rounded-2xl bg-white border border-stone-200/80 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.04)] hover:shadow-md hover:border-slate-300 transition-all flex flex-col justify-between group md:col-span-2 lg:col-span-1"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="w-8 h-8 rounded-full bg-amber-50 flex items-center justify-center text-amber-600">
+                      <Quote className="w-4 h-4" />
+                    </div>
+                    <span className="text-[11px] font-medium text-slate-400 font-serif-tc">暖心實感 #05</span>
+                  </div>
+                  <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-serif-tc">
+                    「今日去完旅行之間我唔知點解感覺好唔舒服，之後特登開番呢個去睇說明書抽下卡，看見結語這句，感覺好好治癒了呢～非常感恩妳呢個套装～」
+                  </p>
+                </div>
+                <div className="mt-5 pt-4 border-t border-slate-100 flex items-center gap-2 text-xs text-[#1A365D] font-medium">
+                  <Sparkle className="w-3.5 h-3.5 text-amber-500 fill-amber-400" />
+                  <span>及時陪伴與深層療癒</span>
+                </div>
+              </motion.div>
+
+            </div>
+
+            {/* Special Expert Endorsement Card: 吳浩希 */}
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="p-7 sm:p-10 rounded-3xl bg-gradient-to-br from-white via-[#F8FAFC] to-[#F1F5F9] border-2 border-[#1A365D]/15 shadow-[0_15px_35px_-10px_rgba(26,54,93,0.08)] relative overflow-hidden"
+            >
+              <div className="absolute top-0 right-0 w-48 h-48 bg-[#1A365D]/5 rounded-full blur-2xl pointer-events-none" />
+
+              <div className="flex flex-col lg:flex-row gap-8 lg:gap-10 items-start">
+                
+                {/* Left Profile column */}
+                <div className="lg:w-1/3 flex flex-col items-start border-b lg:border-b-0 lg:border-r border-slate-200/80 pb-6 lg:pb-0 lg:pr-8">
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#1A365D] text-white text-xs font-semibold tracking-wide mb-3">
+                    <GraduationCap className="w-3.5 h-3.5" />
+                    <span>專業學者 & 資深督導推薦</span>
+                  </div>
+                  
+                  <h3 className="font-serif-tc text-2xl font-bold text-[#1A365D] tracking-tight mb-2">
+                    吳浩希
+                  </h3>
+                  
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-serif-tc">
+                    科創社工的創辦人之一，香港中文大學社工系兼職任教講師，註冊社工，社會工作碩士。資深於家庭服務、青少年服務、學校社會工作服務、及多個學校及社區與上網相關的教育及輔導計劃，現專責督導學校社會工作與網絡教育及輔導服務。
+                  </p>
+                </div>
+
+                {/* Right Content column */}
+                <div className="lg:w-2/3 flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center gap-2 text-sm font-bold text-[#1A365D] font-serif-tc mb-4">
+                      <Award className="w-4 h-4 text-amber-500" />
+                      <span>關於《每日花時》花語卡的專業觀察：</span>
+                    </div>
+
+                    <div className="space-y-3.5">
+                      <div className="flex items-start gap-3 p-3.5 rounded-xl bg-white border border-slate-200/70 text-slate-700 font-serif-tc text-sm sm:text-base leading-relaxed">
+                        <span className="text-[#1A365D] font-bold shrink-0 mt-0.5">•</span>
+                        <span>我係真心欣賞上面有咁多種花，同埋張卡可以直接送俾人</span>
+                      </div>
+
+                      <div className="flex items-start gap-3 p-3.5 rounded-xl bg-white border border-slate-200/70 text-slate-700 font-serif-tc text-sm sm:text-base leading-relaxed">
+                        <span className="text-[#1A365D] font-bold shrink-0 mt-0.5">•</span>
+                        <span>前面既形容詞，又有少少似 ACT value sort card 又有少少 positive psy 既品格強項概念，我覺得真心好有心思揀 d 形容詞</span>
+                      </div>
+
+                      <div className="flex items-start gap-3 p-3.5 rounded-xl bg-white border border-slate-200/70 text-slate-700 font-serif-tc text-sm sm:text-base leading-relaxed">
+                        <span className="text-[#1A365D] font-bold shrink-0 mt-0.5">•</span>
+                        <span>同埋後面 d self-care 小行動，融入左 ACT 既 committee action，又有少少 cbt b/act 元素，我覺得啱 d 有 depression 既學生試</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </motion.div>
+
+          </div>
+        </section>
+
+        {/* 7. 價格與預購區 (Pricing & Final CTA) */}
         <section
           id="pricing-section"
           className="py-20 md:py-28 bg-[#F3F6FA] relative"
